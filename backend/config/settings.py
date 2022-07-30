@@ -73,13 +73,18 @@ INSTALLED_APPS = [
 
 # rest_framework
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES' : (
+    'DEFAULT_PERMISSION_CLASSES' : [
         'rest_framework.permissions.IsAuthenticated', # 기본으로 인증된 유저만 API에 접근가능
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    ),
+    ],
+}
+
+# rest_auth customizing
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer'
 }
 
 # JWT
